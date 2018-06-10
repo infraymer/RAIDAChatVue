@@ -20,6 +20,7 @@
   import Ws from './socket';
 
   import ss from 'sssa-js/sssa'
+  import serv from '../static/trusted.txt'
 
   export default {
     name: 'App',
@@ -28,8 +29,9 @@
     },
     data(){
       return {
+
         //ip: ['ws://192.168.0.102:49001',  'ws://192.168.0.102:49002',  'ws://192.168.0.102:49003'],
-        ip: ['ws://mdev.ddns.net:49150',  'ws://mdev.ddns.net:49151',  'ws://mdev.ddns.net:49152'],
+        //ip: servs.split(/\n/).filter(address => address.length > 0)
       }
     },
     computed:{
@@ -38,7 +40,8 @@
       },
       servs(){
         return this.$store.state.servers;
-      }
+      },
+      ip(){return serv.split(/\n/).filter(address => address.length > 0)}
     },
     created(){
       this.$store.state.servers = [];

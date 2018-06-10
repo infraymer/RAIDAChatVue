@@ -12,7 +12,7 @@ const store = new Vuex.Store({
       name: 'coffce1',
       login: 'login',
       img: '/static/img/defaultPic.jpg',
-      auth: true
+      auth: false
     },
 
     sessions: [

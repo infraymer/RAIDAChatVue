@@ -1,0 +1,3 @@
+ws://mdev.ddns.net:49150
+ws://mdev.ddns.net:49151
+ws://mdev.ddns.net:49152

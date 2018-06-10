@@ -71,6 +71,10 @@ module.exports = {
       {
         test: /\.less$/,
         loader: 'vue-style-loader!css-loader!less-loader'
+      },
+      {
+        test: /\.txt$/,
+        use: 'raw-loader'
       }
     ]
   },

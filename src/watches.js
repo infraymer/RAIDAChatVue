@@ -158,13 +158,15 @@ store.watch(
 
       let data = utils.unionArrayObj(val).data;
       for(let i in data){
-        let us = {
-          login: data[i].login,
-          name: data[i].nickName,
-          img: data[i].photo.length === 0 ? '/static/img/defaultPic.jpg' : data[i].photo,
-          online: data[i].online
-        }
-        store.state.users.push(us);
+	    if(store.state.users.findIndex(it=>it.login === data[i].login) < 0){
+		  let us = {
+            login: data[i].login,
+            name: data[i].nickName,
+            img: data[i].photo.length === 0 ? '/static/img/defaultPic.jpg' : data[i].photo,
+            online: data[i].online
+          }
+          store.state.users.push(us);
+		}
       }
     }
   },
@@ -244,6 +246,7 @@ store.watch(
           title: 'Error of change the status',
           message: val[error].msgError
         })
+		store.state.buffers.lock = []
         return;
       }
 
@@ -258,6 +261,7 @@ store.watch(
       });
 
       store.state.sessions.find(session => session.id === data.dialogId).locked = data.privated;
+	  store.state.buffers.lock = [];
     }
   },
   {
